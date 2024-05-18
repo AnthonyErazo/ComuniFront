@@ -1,0 +1,51 @@
+header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  padding: 28px 12%;
+  transition: all .20s ease;
+}
+
+.title-page{
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  color: inherit;
+  font-weight: 600;
+}
+
+.navbar{
+  display: flex;
+}
+.navbar a{
+  color: inherit;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 5px 0;
+  margin: 0px 30px;
+  transition: all .20s ease;
+}
+.navbar a:hover{
+  color: #ccc;
+}
+.main{
+  display: flex;
+  align-items: center;
+}
+.main a{
+  margin-left: 10px;
+  margin-right: 25px;
+  color: inherit;
+  font-size: 1.3rem;
+  font-weight: 500;
+  transition: all .20s ease;
+}
+.main a:hover{
+  color: #ccc;
+}
