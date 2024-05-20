@@ -1,3 +1,50 @@
+@keyframes slide-in-top {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes slide-in-down {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+}
+
 .questions__section {
     display: flex;
     flex-direction: column;
@@ -6,6 +53,19 @@
     padding: 20px;
     padding-top: 15vh;
     height: 100vh;
+}
+
+.animation-fade-out{
+    animation: fade-out .5s forwards;
+}
+.animation-fade-in{
+    animation: fade-in .5s forwards;
+}
+.animation-slide-in-down{
+    animation: slide-in-down .5s forwards;
+}
+.animation-slide-in-top{
+    animation: slide-in-top .5s forwards;
 }
 
 .questions__title {
@@ -25,6 +85,7 @@
     margin-bottom: 10px;
     overflow: hidden;
     transition: max-height 300ms ease-in-out;
+
 }
 
 .question__box.active {
@@ -57,9 +118,10 @@
     max-height: 0;
     padding: 0 20px;
     transition: max-height 300ms ease-in-out, padding 300ms ease-in-out;
+
 }
 
 .question__box.active .contenido-acordeon {
-    max-height: 500px; 
+    max-height: 500px;
     padding: 15px 20px;
 }

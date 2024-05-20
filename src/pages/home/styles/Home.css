@@ -10,6 +10,7 @@
 
 .section .content {
     z-index: 2;
+    animation: content-slide-up 1s forwards;
 }
 
 .parallax {
@@ -60,3 +61,14 @@
     color: #ffffffa2;
 }
 
+@keyframes content-slide-up {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

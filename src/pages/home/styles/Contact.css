@@ -15,7 +15,6 @@
   padding: 20px;
   height: 100vh; 
   background-color: #f9f9f9;
-  
   width: 100%;
   max-width: 1100px;
   margin: auto;
@@ -23,6 +22,9 @@
   grid-template-columns: repeat(2,1fr);
   grid-gap: 50px;
   margin-top: 90px;
+}
+.info-form{
+  animation: slide-in-left 1s forwards;
 }
 .container-form h2{
   margin-bottom: 15px;
@@ -78,4 +80,29 @@
 .container-form .btn-enviar:hover{
   background: #3e8094;
   color: #ffffffa2;
+}
+.container-form form{
+  animation: slide-in-right 1s forwards;
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }

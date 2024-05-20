@@ -10,6 +10,7 @@ header{
   background: transparent;
   padding: 28px 12%;
   transition: all .20s ease;
+  animation: navbar 1s forwards;
 }
 
 .title-page{
@@ -48,4 +49,15 @@ header{
 }
 .main a:hover{
   color: #ccc;
+}
+
+@keyframes navbar {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

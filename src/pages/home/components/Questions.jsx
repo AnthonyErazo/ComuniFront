@@ -1,8 +1,48 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/Questions.css';
 
 function Questions() {
     const [activeIndex, setActiveIndex] = useState(null);
+    useEffect(() => {
+        const handleIntersection = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (entry.target.className.includes('questions__title')) {
+                        entry.target.classList.remove('animation-slide-in-down');
+                        entry.target.classList.add('animation-slide-in-top');
+                    } else {
+                        entry.target.classList.remove('animation-fade-out');
+                        entry.target.classList.add('animation-fade-in');
+                    }
+
+                } else {
+                    if (entry.target.className.includes('questions__title')) {
+                        entry.target.classList.add('animation-slide-in-down');
+                        entry.target.classList.remove('animation-slide-in-top');
+                    } else {
+                        entry.target.classList.add('animation-fade-out');
+                        entry.target.classList.remove('animation-fade-in');
+                    }
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(handleIntersection, {
+            root: null,
+            rootMargin: "0px",
+            threshold: .2,
+        });
+
+        const titleElements = document.querySelectorAll('.questions__title');
+        const containerElements = document.querySelectorAll('.questions__container');
+        // const sectionQuestion = document.querySelectorAll('.questions__section');
+        const elementsToObserve = [...titleElements, ...containerElements];
+        elementsToObserve.forEach((element) => observer.observe(element));
+
+        return () => {
+            elementsToObserve.forEach((element) => observer.unobserve(element));
+        };
+    }, []);
 
     const questions = [
         {
