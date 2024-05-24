@@ -5,6 +5,8 @@ import Home from './pages/home/Home';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Auth from './pages/auth/Auth';
+import Group from './pages/groups/Group';
+import AllGroups from './pages/groups/AllGroups';
 
 function App() {
     const [navbarStyle, setNavbarStyle] = useState({ color: 'white' });
@@ -34,6 +36,9 @@ function App() {
                         case 'contact':
                             setNavbarStyle({ color: 'black' });
                             break;
+                        case 'group-page':
+                            setNavbarStyle({ color: 'black' });
+                            break;
                         default:
                             setNavbarStyle({ color: 'white' });
                             break;
@@ -56,6 +61,8 @@ function App() {
             <Routes>
                 <Route path="/" Component={Home} />
                 <Route path="/auth" Component={Auth} />
+                <Route path="/group" Component={AllGroups} />
+                <Route path="/group/:gid" Component={Group} />
             </Routes>
             <Footer />
         </>
