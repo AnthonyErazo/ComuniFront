@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import axios from "axios";
 import '../styles/Group.css';
-import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
+import Card from './Card';
 
 function Groups() {
     const grupos = [
@@ -20,75 +19,73 @@ function Groups() {
         { title: 'Nucleo 2', img: 'https://via.placeholder.com/150/FFC300' }
     ];
 
+    const [pokemons, setPokemons] = useState([]);
+
+    const getPokemons = async () => {
+        await axios
+            .get("https://pokeapi.co/api/v2/pokemon?limit=10&offset=64")
+            .then(({ data }) => setPokemons(data.results))
+            .catch((error) => console.error(error));
+    };
+
     useEffect(() => {
-        const handleIntersection = (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    console.log(`Element ${entry.target.className} is in view`);
-                } else {
-                    console.log(`Element ${entry.target.className} is out of view`);
-                }
-            });
-        };
-
-        const observer = new IntersectionObserver(handleIntersection, {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.8
-        });
-
-        const elementsToObserve = document.querySelectorAll('.heading, .swiper_container');
-        elementsToObserve.forEach(element => observer.observe(element));
-
-        return () => {
-            elementsToObserve.forEach(element => observer.unobserve(element));
-        };
+        getPokemons();
     }, []);
 
     return (
-        <section className="container" id='groups'>
-            <h1 className="heading">Grupos</h1>
-            <div className="swiper_container">
-                <Swiper
-                    effect={'coverflow'}
-                    grabCursor={true}
-                    centeredSlides={true}
-                    loop={true}
-                    slidesPerView={'auto'}
-                    coverflowEffect={{
-                        rotate: 0,
-                        stretch: 0,
-                        depth: 100,
-                        modifier: 2.5,
-                    }}
-                    pagination={{ el: '.swiper-pagination', clickable: true }}
-                    navigation={{
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                        clickable: true,
-                    }}
-                    modules={[EffectCoverflow, Pagination, Navigation]}
-                    className="swiper_wrapper"
-                >
-                    {grupos.map((grupo, index) => (
-                        <SwiperSlide key={index}>
-                            <img src={grupo.img} alt={grupo.title} className="swiper_img" />
-                            <p className='title-group'>{grupo.title}</p>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+        <div className="App">
+            <h1>SLIDER CON REACT Y SWIPER</h1>
 
-                <div className="slider-controler">
-                    <div className="swiper-button-prev slider-arrow">
-                        <ion-icon name="arrow-back-outline"></ion-icon>
-                    </div>
-                    <div className="swiper-button-next slider-arrow">
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
-                    </div>
-                    <div className="swiper-pagination"></div>
+            <div className="container">
+                <div className="swiperContainer">
+                    <Swiper
+                        modules={[Pagination, Autoplay]}
+                        autoplay={{
+                            delay: 3000,
+                            disableOnInteraction: false
+                        }}
+                        pagination={{
+                            el: ".pagination",
+                            clickable: true,
+                        }}
+                        slidesPerView={4}
+                        breakpoints={{
+                            "@0.00": {
+                                slidesPerView: 1,
+                                spaceBetween: 25,
+                            },
+                            "@0.50": {
+                                slidesPerView: 1.25,
+                                spaceBetween: 25,
+                            },
+                            "@1.00": {
+                                slidesPerView: 2,
+                                spaceBetween: 25,
+                            },
+                            "@1.25": {
+                                slidesPerView: 2.5,
+                                spaceBetween: 20,
+                            },
+                            "@1.50": {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                            },
+                            "@1.75": {
+                                slidesPerView: 4,
+                                spaceBetween: 20,
+                            },
+                        }}
+                    >
+                        {pokemons?.map((pokemon) => (
+                            <SwiperSlide key={pokemon?.url}>
+                                <Card url={pokemon?.url} />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
+                <div className="pagination" />
             </div>
-        </section>
+        </div>
     );
 }
 

@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Auth from './pages/auth/Auth';
 import Group from './pages/groups/Group';
 import AllGroups from './pages/groups/AllGroups';
+import Dashboard from './pages/dashboard/Dashboard';
 
 function App() {
     const [navbarStyle, setNavbarStyle] = useState({ color: 'white' });
@@ -57,14 +58,15 @@ function App() {
 
     return (
         <>
-            <Navbar style={navbarStyle} />
+            {/* <Navbar style={navbarStyle} /> */}
             <Routes>
                 <Route path="/" Component={Home} />
                 <Route path="/auth" Component={Auth} />
                 <Route path="/group" Component={AllGroups} />
                 <Route path="/group/:gid" Component={Group} />
+                <Route path="/dashboard" Component={Dashboard} />
             </Routes>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 }
