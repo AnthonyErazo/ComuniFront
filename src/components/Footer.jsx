@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import './styles/Footer.css'
 
 function Footer() {
+  // Animacion al momento de visualizar el footer
   useEffect(() => {
     const handleIntersection = (entries) => {
       entries.forEach((entry) => {
@@ -30,6 +31,7 @@ function Footer() {
       elementsToObserve.forEach((element) => observer.unobserve(element));
     };
   }, []);
+  // Footer
   return (
     <footer >
       <p className='footer-text'>&copy; 2024 UNIFIIS - Comunidad Estudiantil</p>

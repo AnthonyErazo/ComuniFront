@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import '../styles/Contact.css';
 
 function Contact() {
+  // Animacion al momento de visualizar la seccion contacto
   useEffect(() => {
     const handleIntersection = (entries) => {
       entries.forEach((entry) => {
@@ -43,6 +44,7 @@ function Contact() {
       elementsToObserve.forEach((element) => observer.unobserve(element));
     };
   }, []);
+  // Seccion de contacto
   return (
 
     <section id='contact' className='contact-section' >

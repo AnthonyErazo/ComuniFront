@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import './styles/Auth.css';
 
 function Auth() {
+    // Funciones para la visualizacion de login o registro
     const [isRegister, setIsRegister] = useState(true);
     const [hideElement, setHideElement] = useState(true);
     const handleSignInClick = () => {
         setIsRegister(false);
+        // Retraso para dar tiempo a la animacion
         setTimeout(() => {
             setHideElement(false)
         }, 500);
@@ -13,11 +15,13 @@ function Auth() {
 
     const handleSignUpClick = () => {
         setIsRegister(true);
+        // Retraso para dar tiempo a la animacion
         setTimeout(() => {
             setHideElement(true)
         }, 500);
     };
 
+    // Login y registro
     return (
         <div className='auth-container'>
             <div className={`form-container register ${hideElement ? "" : "invisible"}`}>

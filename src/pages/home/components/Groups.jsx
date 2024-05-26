@@ -9,26 +9,35 @@ import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 function Groups() {
-    const grupos = [
-        { title: 'Nucleo 1', img: 'https://via.placeholder.com/150/FF5733' },
-        { title: 'Nucleo 2', img: 'https://via.placeholder.com/150/FFC300' },
-        { title: 'Nucleo 2', img: 'https://via.placeholder.com/150/FFC300' },
-        { title: 'Nucleo 2', img: 'https://via.placeholder.com/150/FFC300' },
-        { title: 'Nucleo 2', img: 'https://via.placeholder.com/150/FFC300' }
-    ];
+    const [loading, setLoading] = useState(true);
+    const [grupos, setGrupos] = useState([]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setGrupos([
+                { title: 'Nucleo 1', img: 'https://via.placeholder.com/150/FF5733',description:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis est hic iusto quam maxime consectetur recusandae sequi quisquam rerum, nam debitis facere voluptates, exercitationem cum quis aut quasi nulla esse." },
+                { title: 'Nucleo 1', img: 'https://via.placeholder.com/150/FF5733',description:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis est hic iusto quam maxime consectetur recusandae sequi quisquam rerum, nam debitis facere voluptates, exercitationem cum quis aut quasi nulla esse." },
+                { title: 'Nucleo 1', img: 'https://via.placeholder.com/150/FF5733',description:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis est hic iusto quam maxime consectetur recusandae sequi quisquam rerum, nam debitis facere voluptates, exercitationem cum quis aut quasi nulla esse." },
+                { title: 'Nucleo 1', img: 'https://via.placeholder.com/150/FF5733',description:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis est hic iusto quam maxime consectetur recusandae sequi quisquam rerum, nam debitis facere voluptates, exercitationem cum quis aut quasi nulla esse." },
+                { title: 'Nucleo 1', img: 'https://via.placeholder.com/150/FF5733',description:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis est hic iusto quam maxime consectetur recusandae sequi quisquam rerum, nam debitis facere voluptates, exercitationem cum quis aut quasi nulla esse." }
+            ]);
+            setLoading(false);
+        }, 2000);
+    }, []);
 
     return (
         <section id='groups' className="App">
-            <div className="header">
-                <h1>Algunas comunidades</h1>
-                <Button sx={{
+            <div className="header-groups">
+                <h1 className='title-groups'>Algunas comunidades</h1>
+                <Button className="edit-button" sx={{
                     bgcolor: '#5ea0b4',
                     border: '1px solid #5ea0b4',
+                    textTransform:'capitalize',
                     '&:hover': {
                         bgcolor: '#3e8094',
                         border: '1px solid #3e8094'
                     }
-                }} variant="contained" className="edit-button">
+                }} variant="contained">
                     <Link style={{
                         color: '#fff',
                         '&:hover': {
@@ -77,9 +86,9 @@ function Groups() {
                             },
                         }}
                     >
-                        {grupos?.map((grupo, index) => (
+                        {(loading ? Array.from(new Array(5)) : grupos).map((grupo, index) => (
                             <SwiperSlide key={index}>
-                                <CardItem grupo={grupo} />
+                                <CardItem grupo={grupo} isLoading={loading} />
                             </SwiperSlide>
                         ))}
                     </Swiper>
@@ -96,6 +105,7 @@ function Groups() {
             }}>
                 <Link style={{
                     color: '#fff',
+                    textTransform:'capitalize',
                     '&:hover': {
                         color: '#ffffffa2'
                     }

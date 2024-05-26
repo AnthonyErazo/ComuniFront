@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ImageList, ImageListItem, ImageListItemBar, IconButton, Box, useMediaQuery, Stack, Pagination, Skeleton, Modal, Typography, Button } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import { Link } from 'react-router-dom';
 
 function AllGroups() {
   const isBelow1400px = useMediaQuery('(max-width:1400px)');
@@ -13,7 +14,7 @@ function AllGroups() {
   const [openModal, setOpenModal] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [width, setWidth] = useState('100%');
- 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -46,28 +47,47 @@ function AllGroups() {
   };
 
   const getPadding = () => {
-  let gapValue;
-  if (isBelow500px) {
-    gapValue = 20;
-    return { padding: '2rem', gap: gapValue };
-  }
-  if (isBelow1400px) {
-    gapValue = 20;
-    return { padding: '5rem', gap: gapValue };
-  }
-  gapValue = 30;
-  return { padding: '6rem', gap: gapValue };
-};
+    let gapValue;
+    if (isBelow500px) {
+      gapValue = 20;
+      return { padding: '2rem', gap: gapValue };
+    }
+    if (isBelow1400px) {
+      gapValue = 20;
+      return { padding: '5rem', gap: gapValue };
+    }
+    gapValue = 30;
+    return { padding: '6rem', gap: gapValue };
+  };
 
 
   const { padding, gap } = getPadding();
 
   return (
     <section id='all-groups'>
-      <Box sx={{position:'relative', width:`100%`,gap: '4rem', background: '#fff', flexDirection: 'column', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: `7rem ${padding}`, minHeight: '94vh' }}>
-        <Stack>
-          <Pagination count={10} shape="rounded" />
-        </Stack>
+      <Box sx={{ position: 'relative', width: `100%`, gap: '4rem', background: '#fff', flexDirection: 'column', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: `7rem ${padding}`, minHeight: '94vh' }}>
+        <Box sx={{display:'flex',alignSelf:'flex-start',width:'100%'}}>
+          <Stack sx={{}}>
+            <Pagination count={10} shape="rounded" />
+          </Stack>
+          <Button sx={{
+            bgcolor: '#5ea0b4',
+            border: '1px solid #5ea0b4',
+            marginLeft:'auto',
+            '&:hover': {
+              bgcolor: '#3e8094',
+              border: '1px solid #3e8094'
+            }
+          }} variant="contained">
+            <Link style={{
+              color: '#fff',
+              textTransform:'capitalize',
+              '&:hover': {
+                color: '#ffffffa2'
+              }
+            }} to={'/dashboard'}>Agregar/Editar comunidad</Link>
+          </Button>
+        </Box>
         <ImageList sx={{ width: '100%', height: 'auto' }} variant="masonry" cols={getCols()} gap={gap}>
           {loading ? (
             Array.from(new Array(8)).map((_, index) => (
@@ -93,7 +113,9 @@ function AllGroups() {
                       aria-label={`info about ${group.name}`}
                       onClick={() => handleOpenModal(group)}
                     >
-                      <VisibilityIcon />
+                      <Link style={{ color: '#fff' }} to={'/groups/1'}>
+                        <VisibilityIcon />
+                      </Link>
                     </IconButton>
                   }
                 />

@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import './styles/Navbar.css';
-import { Link } from 'react-router-dom';
 
 function Navbar({style}) {
-  const [isOpen, setIsOpen] = useState(false);
 
+  // Acciones para menu responsive
+  const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  // Barra de navegacion
   return (
     <header style={style}>
       <a href='/#inicio' className='title-page'>COMUNI</a>
