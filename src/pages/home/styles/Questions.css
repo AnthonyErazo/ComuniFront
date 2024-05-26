@@ -74,16 +74,9 @@
 }
 
 .questions__container {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    width: 100%;
 }
 
 .question__box {
-    background: #1c1c1c;
-    margin-bottom: 10px;
-    overflow: hidden;
     transition: max-height 300ms ease-in-out;
 
 }

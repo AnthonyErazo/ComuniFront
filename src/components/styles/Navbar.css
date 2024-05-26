@@ -1,4 +1,9 @@
-header{
+:root {
+  --navbar-text-color: white;
+  --navbar-shadow-color: rgba(255, 255, 255, 0.2);
+}
+
+header {
   position: fixed;
   width: 100%;
   top: 0;
@@ -10,48 +15,12 @@ header{
   background: transparent;
   padding: 28px 12%;
   transition: all .20s ease;
-  animation: navbar 1s forwards;
+  animation: navbarSlideIn 1s forwards, navbarGlow 1s ease-in-out;
+  color: var(--navbar-text-color);
+  box-shadow: 0 4px 8px var(--navbar-shadow-color);
 }
 
-.title-page{
-  display: flex;
-  align-items: center;
-  font-size: 1.8rem;
-  color: inherit;
-  font-weight: 600;
-}
-
-.navbar{
-  display: flex;
-}
-.navbar a{
-  color: inherit;
-  font-size: 1.3rem;
-  font-weight: 500;
-  padding: 5px 0;
-  margin: 0px 30px;
-  transition: all .20s ease;
-}
-.navbar a:hover{
-  color: #ccc;
-}
-.main{
-  display: flex;
-  align-items: center;
-}
-.main a{
-  margin-left: 10px;
-  margin-right: 25px;
-  color: inherit;
-  font-size: 1.3rem;
-  font-weight: 500;
-  transition: all .20s ease;
-}
-.main a:hover{
-  color: #ccc;
-}
-
-@keyframes navbar {
+@keyframes navbarSlideIn {
   0% {
     transform: translateY(-100%);
     opacity: 0;
@@ -60,4 +29,38 @@ header{
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+@keyframes navbarGlow {
+  0% {
+    box-shadow: 0 4px 8px var(--navbar-shadow-color), 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 4px 8px var(--navbar-shadow-color);
+  }
+}
+
+.title-page {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  color: inherit;
+  font-weight: 600;
+}
+
+.navbar {
+  display: flex;
+}
+
+.navbar a {
+  color: inherit;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 5px 0;
+  margin: 0px 30px;
+  transition: all .20s ease;
+}
+
+.navbar a:hover {
+  color: #ccc;
 }

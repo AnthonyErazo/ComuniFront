@@ -53,14 +53,19 @@
     text-decoration: none;
     border-radius: 5px;
     transition: all 300ms ease;
-    border-radius: .7rem;
+    border-radius: .2rem;
 }
 
 .section .btn:hover {
     background-color: #3e8094;
     color: #ffffffa2;
 }
-
+.animation-content-slide-up{
+    animation: content-slide-up 1s forwards
+}
+.animation-content-slide-down{
+    animation: content-slide-down 1s forwards
+}
 @keyframes content-slide-up {
     0% {
         transform: translateY(100%);
@@ -70,5 +75,16 @@
     100% {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+@keyframes content-slide-down {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
     }
 }

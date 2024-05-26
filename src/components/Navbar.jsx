@@ -20,9 +20,6 @@ function Navbar({style}) {
           <li><a href="/#contact" onClick={toggleMenu}>Contacto</a></li>
         </ul>
       </div>
-      <div className="main">
-        <Link to="/auth" >Autenticacion</Link>
-      </div>
     </header>
   );
 }

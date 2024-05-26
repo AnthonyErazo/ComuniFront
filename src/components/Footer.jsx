@@ -9,8 +9,8 @@ function Footer() {
           entry.target.classList.add('animation-slide-in-bottom');
           entry.target.classList.remove('animation-slide-in-up');
         } else {
-          entry.target.classList.add('animation-slide-in-bottom');
-          entry.target.classList.remove('animation-slide-in-up');
+          entry.target.classList.remove('animation-slide-in-bottom');
+          entry.target.classList.add('animation-slide-in-up');
         }
       });
     };
@@ -18,7 +18,7 @@ function Footer() {
     const observer = new IntersectionObserver(handleIntersection, {
       root: null,
       rootMargin: "0px",
-      threshold: 0.5,
+      threshold: 0.2,
     });
 
     const elementsToObserve = document.querySelectorAll(

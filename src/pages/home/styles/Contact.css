@@ -50,7 +50,7 @@
   color: #5ea0b4;
   margin-right: 10px;
 }
-.container-form form .campo, textarea{
+.container-form .form-contact .campo, textarea{
   width: 100%;
   padding: 15px 10px;
   font-size: 16px;
@@ -60,7 +60,7 @@
   outline: 0px;
   border-radius: .7rem;
 }
-.container-form form textarea{
+.container-form .form-contact textarea{
   max-width: 530px;
   min-width: 530px;
   min-height: 140px;
@@ -81,8 +81,21 @@
   background: #3e8094;
   color: #ffffffa2;
 }
-.container-form form{
+.form-contact{
   animation: slide-in-right 1s forwards;
+}
+
+.animation-slide-in-left{
+  animation: slide-in-left 1s forwards;
+}
+.animation-slide-out-left{
+  animation: slide-out-left 1s forwards;
+}
+.animation-slide-in-right{
+  animation: slide-in-right 1s forwards;
+}
+.animation-slide-out-right{
+  animation: slide-out-right 1s forwards;
 }
 
 @keyframes slide-in-left {
@@ -95,7 +108,27 @@
     opacity: 1;
   }
 }
+@keyframes slide-out-left {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
 
+@keyframes slide-out-right {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
 @keyframes slide-in-right {
   0% {
     transform: translateX(100%);

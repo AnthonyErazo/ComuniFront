@@ -27,21 +27,38 @@ function App() {
                     switch (section.id) {
                         case 'inicio':
                             setNavbarStyle({ color: 'white' });
+                            document.documentElement.style.setProperty('--navbar-text-color', 'white');
+                            document.documentElement.style.setProperty('--navbar-shadow-color', 'rgba(255, 255, 255, 0.2)');
                             break;
                         case 'groups':
                             setNavbarStyle({ color: 'black' });
+                            document.documentElement.style.setProperty('--navbar-text-color', 'black');
+                            document.documentElement.style.setProperty('--navbar-shadow-color', 'rgba(0, 0, 0, 0.2)');
                             break;
                         case 'questions':
                             setNavbarStyle({ color: 'white' });
+                            document.documentElement.style.setProperty('--navbar-text-color', 'white');
+                            document.documentElement.style.setProperty('--navbar-shadow-color', 'rgba(255, 255, 255, 0.2)');
                             break;
                         case 'contact':
                             setNavbarStyle({ color: 'black' });
+                            document.documentElement.style.setProperty('--navbar-text-color', 'black');
+                            document.documentElement.style.setProperty('--navbar-shadow-color', 'rgba(0, 0, 0, 0.2)');
                             break;
                         case 'group-page':
                             setNavbarStyle({ color: 'black' });
+                            document.documentElement.style.setProperty('--navbar-text-color', 'black');
+                            document.documentElement.style.setProperty('--navbar-shadow-color', 'rgba(0, 0, 0, 0.2)');
+                            break;
+                        case 'all-groups':
+                            setNavbarStyle({ color: 'black' });
+                            document.documentElement.style.setProperty('--navbar-text-color', 'black');
+                            document.documentElement.style.setProperty('--navbar-shadow-color', 'rgba(0, 0, 0, 0.2)');
                             break;
                         default:
                             setNavbarStyle({ color: 'white' });
+                            document.documentElement.style.setProperty('--navbar-text-color', 'white');
+                            document.documentElement.style.setProperty('--navbar-shadow-color', 'rgba(255, 255, 255, 0.2)');
                             break;
                     }
                 }
@@ -58,15 +75,15 @@ function App() {
 
     return (
         <>
-            {/* <Navbar style={navbarStyle} /> */}
+            <Navbar style={navbarStyle} />
             <Routes>
                 <Route path="/" Component={Home} />
                 <Route path="/auth" Component={Auth} />
-                <Route path="/group" Component={AllGroups} />
-                <Route path="/group/:gid" Component={Group} />
+                <Route path="/groups" Component={AllGroups} />
+                <Route path="/groups/:gid" Component={Group} />
                 <Route path="/dashboard" Component={Dashboard} />
             </Routes>
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 }
